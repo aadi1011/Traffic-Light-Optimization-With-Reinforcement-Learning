@@ -1,0 +1,22 @@
+# Ignore compiled Python files
+__pycache__/
+
+models/model_1/
+models/model_3/
+
+# Ignore system and IDE files
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+
+# Ignore environment files
+.env
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore IDE specific files
+.idea/
+.vscode/
