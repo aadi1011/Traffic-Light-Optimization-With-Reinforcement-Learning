@@ -2,6 +2,7 @@
 __pycache__/
 
 models/model_1/
+
 models/model_3/
 
 # Ignore system and IDE files
