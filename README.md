@@ -2,10 +2,6 @@
 
 This project offers a framework for optimizing traffic flow at complex intersections using a Deep Q-Learning Reinforcement Learning agent. By intelligently selecting traffic light phases, the agent aims to maximize traffic efficiency.
 
-## Introduction
-
-This repository provides a starting point for those interested in deep reinforcement learning with SUMO. Extracted from a master's thesis, the code represents a simplified version of the author's work, serving as a helpful resource for similar projects.
-
 ## Deep Q-Learning Agent
 
 - **Framework**: Q-Learning with a deep neural network.
