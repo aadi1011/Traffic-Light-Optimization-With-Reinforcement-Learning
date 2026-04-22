@@ -154,6 +154,7 @@ class Simulation:
         """
         yellow_phase_code = old_action * 2 + 1 # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
         traci.trafficlight.setPhase("TL", yellow_phase_code)
+        traci.trafficlight.setPhaseDuration("TL", self._yellow_duration)
 
 
     def _set_green_phase(self, action_number):
@@ -168,6 +169,7 @@ class Simulation:
             traci.trafficlight.setPhase("TL", PHASE_EW_GREEN)
         elif action_number == 3:
             traci.trafficlight.setPhase("TL", PHASE_EWL_GREEN)
+        traci.trafficlight.setPhaseDuration("TL", self._green_duration)
 
 
     def _get_queue_length(self):
