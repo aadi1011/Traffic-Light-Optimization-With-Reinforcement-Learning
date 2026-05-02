@@ -61,6 +61,34 @@ This project was developed by:
 
 For additional information or inquiries, please feel free to open an issue on the repository's issues page.
 
+## Troubleshooting
+
+### macOS (Apple Silicon / M1, M2, M3)
+
+**`sumo-gui` shows a blank grey window (GLXBadContext errors)**
+
+The official SUMO `.pkg` installer uses an X11/FOX toolkit build that has broken OpenGL on Apple Silicon, even with XQuartz installed. Use the native arm64 binary that ships with the `eclipse-sumo` Python package instead:
+
+```bash
+pip install eclipse-sumo
+export SUMO_HOME=$(python -c "import sumo; print(sumo.SUMO_HOME)")
+export PATH=$SUMO_HOME/bin:$PATH
+```
+
+Add these exports to `~/.zshrc` to make them permanent. Then run training or testing as normal.
+
+**`ValueError: Argument(s) not recognized: {'lr': 0.001}`**
+
+The `lr` keyword was removed in newer Keras versions. If you encounter this, update `model.py` line where the optimizer is compiled — replace `Adam(lr=...)` with `Adam(learning_rate=...)`.
+
+**`TypeError: MeanSquaredError.get_config() missing 1 required positional argument: 'self'`**
+
+Pass the loss as an instance, not a class. In `model.py`, change `loss=losses.MeanSquaredError` to `loss=losses.MeanSquaredError()`.
+
+**`FileNotFoundError: No such file or directory: 'sumo-gui'`**
+
+SUMO is not on your PATH or `SUMO_HOME` is not set. Set both environment variables as shown above before running.
+
 ### References
 
 - Amazon AWS Documentation
