@@ -1,9 +1,7 @@
 # Ignore compiled Python files
 __pycache__/
 
-models/model_1/
-
-models/model_3/
+models/model*
 
 # Ignore system and IDE files
 .DS_Store

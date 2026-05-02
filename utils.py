@@ -97,9 +97,19 @@ def set_train_path(models_path_name):
 
 def set_test_path(models_path_name, model_n):
     """
-    Returns a model path that identifies the model number provided as argument and a newly created 'test' path
+    Returns a model path that identifies the model number provided as argument and a newly created 'test' path.
+    If model_n is 0, automatically selects the latest model.
     """
-    model_folder_path = os.path.join(os.getcwd(), models_path_name, 'model_'+str(model_n), '')
+    models_path = os.path.join(os.getcwd(), models_path_name, '')
+
+    if model_n == 0:
+        dir_content = [d for d in os.listdir(models_path) if os.path.isdir(os.path.join(models_path, d)) and d.startswith('model_')]
+        if not dir_content:
+            sys.exit('No models found in the models folder')
+        model_n = max(int(name.split('_')[1]) for name in dir_content)
+        print('Auto-selected latest model:', model_n)
+
+    model_folder_path = os.path.join(models_path, 'model_'+str(model_n), '')
 
     if os.path.isdir(model_folder_path):    
         plot_path = os.path.join(model_folder_path, 'test', '')
